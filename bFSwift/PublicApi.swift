@@ -13,19 +13,19 @@ public typealias BFCallback = ((_ err: BFError?, _ data: JSON?) -> Void)
 
 public class PublicApi {
     
-    static func getBoard(productCode: ProductCode, callback: @escaping BFCallback) {
+    public static func getBoard(productCode: ProductCode, callback: @escaping BFCallback) {
         PublicResource.getBoard(productCode: productCode, callback: callback)
     }
     
-    static func getTicker(productCode: ProductCode, callback: @escaping BFCallback) {
+    public static func getTicker(productCode: ProductCode, callback: @escaping BFCallback) {
         PublicResource.getTicker(productCode: productCode, callback: callback)
     }
     
-    static func getExcutions(productCode: ProductCode, count: Int = 100, callback: @escaping BFCallback) {
+    public static func getExcutions(productCode: ProductCode, count: Int = 100, callback: @escaping BFCallback) {
         PublicResource.getExcutions(productCode: productCode, count: count, callback: callback)
     }
     
-    static func getHealth(callback: @escaping BFCallback) {
+    public static func getHealth(callback: @escaping BFCallback) {
         PublicResource.getHealth(callback: callback)
     }
     
