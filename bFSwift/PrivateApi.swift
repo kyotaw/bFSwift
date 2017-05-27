@@ -84,6 +84,10 @@ public class PrivateApi {
         PrivateResource.getBalance(apiKeys: self.keys, callback: callback)
     }
     
+    public func getTradingCommission(productCode: ProductCode, _ callback: @escaping BFCallback) {
+        PrivateResource.getTradingCommission(apiKeys: self.keys, productCode: productCode, callback)
+    }
+    
     public func getChildOrders(productCode: ProductCode, childOrderState: ChildOrderState, count: Int = 100, _ callback: @escaping BFCallback) {
         PrivateResource.getChildOrders(apiKeys: self.keys, productCode: productCode, childOrderState: childOrderState, count: count, callback)
     }

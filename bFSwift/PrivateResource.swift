@@ -88,6 +88,24 @@ class PrivateResource : Resource {
         }
     }
     
+    static public func getTradingCommission(apiKeys: ApiKeys, productCode: ProductCode, _ callback: @escaping BFCallback) {
+        do {
+            let path = "/" + PrivateResource.version + "/me/gettradingcommission"
+            let query = [
+                "product_code": productCode.rawValue
+                ]
+            let pathWithQuery = self.addQueryParameters(url: path, params: query)
+            let params = Dictionary<String, String>()
+            let headers = try self.makeHeaders(params: params, path: pathWithQuery, method: "GET", apiKeys: apiKeys)
+            let url = PrivateResource.endPointUrl + pathWithQuery
+            self.get(url, headers: headers, callback: callback)
+        } catch BFErrorCode.cryptionError {
+            callback(BFError(errorCode: .cryptionError), nil)
+        } catch {
+            callback(BFError(errorCode: .unknownError), nil)
+        }
+    }
+    
     static func getChildOrders(apiKeys: ApiKeys, productCode: ProductCode, childOrderState: ChildOrderState, count: Int, _ callback: @escaping BFCallback) {
         do {
             let path = "/" + PrivateResource.version + "/me/getchildorders"

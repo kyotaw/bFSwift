@@ -55,7 +55,7 @@ class Resource {
                 case .success:
                     let data = JSON(response.result.value! as AnyObject)
                     if let status = data["status"].int {
-                        print(data)
+                        //print(data)
                         if let errorCode = BFErrorCode(rawValue: status) {
                             callback(BFError(errorCode: errorCode), nil)
                         } else {
